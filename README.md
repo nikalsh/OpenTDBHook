@@ -10,9 +10,9 @@ Maven:
 ```xml
 <dependency> 
 <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-core -->
-<groupId>com.fasterxml.jackson.core</groupId>
-<artifactId>jackson-core</artifactId>
-<version>2.9.7</version>
+  <groupId>com.fasterxml.jackson.core</groupId>
+    <artifactId>jackson-core</artifactId>
+      <version>2.9.7</version>
 </dependency>
 
 <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
