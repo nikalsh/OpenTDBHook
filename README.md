@@ -8,8 +8,7 @@ Dependencies:
 
 Maven:
 ```xml
-<dependency>
-  
+<dependency> 
 <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-core -->
 <groupId>com.fasterxml.jackson.core</groupId>
 <artifactId>jackson-core</artifactId>
