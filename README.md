@@ -8,41 +8,26 @@ Dependencies:
 
 Maven:
 ```xml
-<dependency>
-
-<groupId>com.fasterxml.jackson.core</groupId>
-
-<artifactId>jackson-core</artifactId>
-
-<version>2.9.7</version>
-
+<dependency> 
+<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-core -->
+  <groupId>com.fasterxml.jackson.core</groupId>
+  <artifactId>jackson-core</artifactId>
+  <version>2.9.7</version>
 </dependency>
-
+```
+```xml
 <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
-
-
-
 <dependency>
-
-<groupId>com.fasterxml.jackson.core</groupId>
-
-<artifactId>jackson-databind</artifactId>
-
-<version>2.9.7</version>
-
+  <groupId>com.fasterxml.jackson.core</groupId>
+  <artifactId>jackson-databind</artifactId>
+  <version>2.9.7</version>
 </dependency>
-
+```
+```xml
 <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-annotations -->
-
-
-
 <dependency>
-
-<groupId>com.fasterxml.jackson.core</groupId>
-
-<artifactId>jackson-annotations</artifactId>
-
-<version>2.9.7</version>
-
+  <groupId>com.fasterxml.jackson.core</groupId>
+  <artifactId>jackson-annotations</artifactId>
+  <version>2.9.7</version>
 </dependency>
 ```
