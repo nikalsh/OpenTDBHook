@@ -12,8 +12,9 @@ Dependencies:
 
 Maven:
 ```xml
-<dependency> 
 <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-core -->
+
+<dependency> 
   <groupId>com.fasterxml.jackson.core</groupId>
   <artifactId>jackson-core</artifactId>
   <version>2.9.7</version>
