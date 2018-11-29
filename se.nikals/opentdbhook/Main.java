@@ -26,15 +26,17 @@ public class Main {
     private String currDir = System.getProperty("user.dir");
     private String databaseDir = "";
     private String tokenDir = "";
-    private int cofficient;
+    private int amountOfQuestionsPerAPICall;
     private DAOToken daoToken;
     private DAOQuestions daoQuestions;
     private int sum;
 
-    public Main(int numOfQuestionsPerRecall) throws ProtocolException, IOException {
-//        this.cofficient = (numOfQuestionsPerRecall 
-        this.setDatabaseDirectory("/src/Questions/");
-        this.setTokenDirectory("/src/server/opentriviadatabaseapihook/");
+    public Main(int amountOfQuestionsPerAPICall) throws ProtocolException, IOException {
+        int roundAmountOfQuestionsPerAPICallToNearestTen = (int) ((Math.round(amountOfQuestionsPerAPICall / 10.0) * 10));
+        this.amountOfQuestionsPerAPICall = (roundAmountOfQuestionsPerAPICallToNearestTen > 50 ? 50 : roundAmountOfQuestionsPerAPICallToNearestTen);
+
+        this.setDatabaseDirectory("/Questions/");
+        this.setTokenDirectory("/opentriviadatabaseapihook/");
 
         databaseIO = new DatabaseIO(tokenDir, databaseDir);
 
@@ -46,7 +48,7 @@ public class Main {
         } else {
             hookConfig = new HookConfig(databaseIO.getTokenFromFile());
             apiRequest = new URL(hookConfig.getQuestionRequest());
-            for (int i = 0; i < this.cofficient; i++) {
+            for (int i = 0; i < this.amountOfQuestionsPerAPICall; i++) {
                 daoQuestions = generateQuestions(apiRequest);
 
                 System.out.println("Response: " + daoQuestions.response_code);
@@ -108,15 +110,18 @@ public class Main {
 //        hook.setDatabaseDirectory(path);
 //        hook.setTokenDirectory(path);
 
-        for (int i = 0; i <= 50; i++) {
-
-            System.out.println(i + " " + (i % 10 == 0));
-
-            
-            
-            
+        for (String arg : args) {
+            System.out.println(arg);
         }
-
+//
+//for (int i = 0; i <= 60; i++) {
+//            
+//            
+//            int stuff = (int) ((Math.round(i / 10.0) * 10));
+//            int amountOfQuestionsPerAPICall = (stuff > 50 ? 50 : (stuff < 10 ? 10 : stuff));
+//            System.out.println(i + " = " + amountOfQuestionsPerAPICall);
+//        }
+//
+//    }
     }
-
 }

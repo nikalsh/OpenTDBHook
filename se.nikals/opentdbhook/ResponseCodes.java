@@ -4,22 +4,12 @@ package se.nikals.opentdbhook;
  *
  * @author nikalsh
  */
-public enum ResponseCodes {
+public class ResponseCodes {
 
-    SUCCESS(0),
-    NO_RESULTS(1),
-    INVALID_PARAMETER(2),
-    TOKEN_NOT_FOUND(3),
-    TOKEN_EMPTY(4);
-
-    private final int code;
-
-    ResponseCodes(int code) {
-        this.code = code;
-    }
-
-    public int getIntCode() {
-        return this.code;
-    }
+    static final int SUCCESS = 0;
+    static final int NO_RESULTS = 1;
+    static final int INVALID_PARAMETER = 2;
+    static final int TOKEN_NOT_FOUND = 3;
+    static final int TOKEN_EMPTY = 4;
 
 }
