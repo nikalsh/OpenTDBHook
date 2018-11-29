@@ -18,9 +18,9 @@ public class Main {
 //      https://opentdb.com/api_count_global.php    
 
     private String token = "";
-    private DatabaseIO databaseIO;
+    private FileHandler databaseIO;
     private HttpURLConnection connect;
-    private HookConfig hookConfig;
+    private RequestConfig hookConfig;
     private BufferedReader in;
     private URL apiRequest;
     private String currDir = System.getProperty("user.dir");
@@ -38,15 +38,15 @@ public class Main {
         this.setDatabaseDirectory("/Questions/");
         this.setTokenDirectory("/opentriviadatabaseapihook/");
 
-        databaseIO = new DatabaseIO(tokenDir, databaseDir);
+        databaseIO = new FileHandler(tokenDir, databaseDir);
 
         if (!databaseIO.wasTokenCreatedWithinExpirationDuration()) {
-            apiRequest = new URL(API_CONST.NEW_TOKEN);
+            apiRequest = new URL(API.NEW_TOKEN);
             daoToken = generateToken(apiRequest);
             databaseIO.writeTokenToFile(daoToken.token);
 
         } else {
-            hookConfig = new HookConfig(databaseIO.getTokenFromFile());
+            hookConfig = new RequestConfig(databaseIO.getTokenFromFile());
             apiRequest = new URL(hookConfig.getQuestionRequest());
             for (int i = 0; i < this.amountOfQuestionsPerAPICall; i++) {
                 daoQuestions = generateQuestions(apiRequest);

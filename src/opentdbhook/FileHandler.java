@@ -18,7 +18,7 @@ import java.time.temporal.ChronoUnit;
  *
  * @author nikalsh
  */
-class DatabaseIO {
+class FileHandler {
 
     private BufferedReader fr;
     private PrintWriter fos;
@@ -27,7 +27,7 @@ class DatabaseIO {
     File tokenFile;
     private boolean debug = false;
 
-    public DatabaseIO(String tokenDir, String databaseDir) throws UnsupportedEncodingException, FileNotFoundException {
+    public FileHandler(String tokenDir, String databaseDir) throws UnsupportedEncodingException, FileNotFoundException {
 
         this.tokenDir = tokenDir;
         this.databaseDir = databaseDir;
@@ -79,7 +79,7 @@ class DatabaseIO {
         return token;
     }
 
-    public long getHoursElapsedSince(LocalDateTime earlier) {
+    private long getHoursElapsedSince(LocalDateTime earlier) {
         LocalDateTime now = LocalDateTime.now();
         return ChronoUnit.HOURS.between(earlier, now);
     }
@@ -138,7 +138,7 @@ class DatabaseIO {
         return URLDecoder.decode(s, "UTF-8");
     }
 
-    public PrintWriter getPw(File file, boolean append) throws UnsupportedEncodingException, FileNotFoundException {
+    private PrintWriter getPw(File file, boolean append) throws UnsupportedEncodingException, FileNotFoundException {
 
         return (append == true
                 ? new PrintWriter(new BufferedWriter(new OutputStreamWriter(new FileOutputStream(tokenFile, true), "UTF-8")))

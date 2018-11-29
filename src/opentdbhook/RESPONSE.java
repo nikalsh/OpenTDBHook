@@ -4,7 +4,7 @@ package src.opentdbhook;
  *
  * @author nikalsh
  */
-public class RESPONSE_CODE {
+public class RESPONSE {
 
     static final int SUCCESS = 0;
     static final int NO_RESULTS = 1;

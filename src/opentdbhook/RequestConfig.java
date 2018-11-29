@@ -4,18 +4,18 @@ package src.opentdbhook;
  *
  * @author nikalsh
  */
-class HookConfig {
+class RequestConfig {
 
     private String amount = "10";
-    private String category = API_CONST.CATEGORY_ANY;
-    private String difficulty = API_CONST.DIFFICULTY_ANY;
-    private String type = API_CONST.TYPE_MULTI;
-    private String encoding = API_CONST.ENCODING_RFC_3986;
+    private String category = API.CATEGORY_ANY;
+    private String difficulty = API.DIFFICULTY_ANY;
+    private String type = API.TYPE_MULTI;
+    private String encoding = API.ENCODING_RFC_3986;
     private String token = "";
 
     private String QuestionRequest;
 
-    public HookConfig(String token) {
+    public RequestConfig(String token) {
         setToken(token);
     }
 
