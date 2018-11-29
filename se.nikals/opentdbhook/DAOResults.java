@@ -1,4 +1,4 @@
-package server.OpenTriviaDataBaseAPIHook;
+package se.nikals.opentdbhook;
 
 /**
  *

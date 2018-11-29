@@ -31,9 +31,9 @@ public class Main {
     private DAOQuestions daoQuestions;
     private int sum;
 
-    public Main(int cofficient) throws ProtocolException, IOException {
-        this.cofficient = cofficient;
-        this.setDatabaseDirectory("/src/server/DB/Questions/");
+    public Main(int numOfQuestionsPerRecall) throws ProtocolException, IOException {
+//        this.cofficient = (numOfQuestionsPerRecall 
+        this.setDatabaseDirectory("/src/Questions/");
         this.setTokenDirectory("/src/server/opentriviadatabaseapihook/");
 
         databaseIO = new DatabaseIO(tokenDir, databaseDir);
@@ -104,7 +104,18 @@ public class Main {
     }
 
     public static void main(String[] args) throws IOException {
-        Main hook = new Main(10);
+//        Main hook = new Main(10);
+//        hook.setDatabaseDirectory(path);
+//        hook.setTokenDirectory(path);
+
+        for (int i = 0; i <= 50; i++) {
+
+            System.out.println(i + " " + (i % 10 == 0));
+
+            
+            
+            
+        }
 
     }
 
