@@ -1,4 +1,4 @@
-package se.nikals.opentdbhook;
+package nikalsh.opentdbhook;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -93,8 +93,8 @@ class DatabaseIO {
     }
 
     //            URLDecoder.decode(tokenDir, tokenDir)
-    public void writeQuestionsToFiles(DAOQuestions daoQuestions) throws UnsupportedEncodingException, FileNotFoundException {
-        DAOResults[] results = daoQuestions.getResults();
+    public void writeQuestionsToFiles(POJOQuestion daoQuestions) throws UnsupportedEncodingException, FileNotFoundException {
+        POJOResults[] results = daoQuestions.getResults();
         String dbdir = this.databaseDir;
         String fileName = "";
         File file;

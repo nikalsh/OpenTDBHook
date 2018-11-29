@@ -1,4 +1,4 @@
-package se.nikals.opentdbhook;
+package nikalsh.opentdbhook;
 
 /**
  *
@@ -7,10 +7,10 @@ package se.nikals.opentdbhook;
 class HookConfig {
 
     private String amount = "10";
-    private String category = ApiConstants.CATEGORY_ANY;
-    private String difficulty = ApiConstants.DIFFICULTY_ANY;
-    private String type = ApiConstants.TYPE_MULTI;
-    private String encoding = ApiConstants.ENCODING_RFC_3986;
+    private String category = API_CONST.CATEGORY_ANY;
+    private String difficulty = API_CONST.DIFFICULTY_ANY;
+    private String type = API_CONST.TYPE_MULTI;
+    private String encoding = API_CONST.ENCODING_RFC_3986;
     private String token = "";
 
     private String QuestionRequest;

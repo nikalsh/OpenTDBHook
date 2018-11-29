@@ -1,10 +1,10 @@
-package se.nikals.opentdbhook;
+package nikalsh.opentdbhook;
 
 /**
  *
  * @author nikalsh
  */
-class DAOResults {
+class POJOResults {
 
     String category;
     String type;
@@ -13,7 +13,7 @@ class DAOResults {
     String correct_answer;
     String[] incorrect_answers = new String[3];
 
-    public DAOResults() {
+    public POJOResults() {
     }
 
     public void setCategory(String category) {

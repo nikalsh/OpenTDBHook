@@ -1,22 +1,22 @@
-package se.nikals.opentdbhook;
+package nikalsh.opentdbhook;
 
 /**
  *
  * @author nikalsh
  */
-public class DAOQuestions {
+public class POJOQuestion {
 
     int response_code;
-    DAOResults[] results;
+    POJOResults[] results;
 
-    public DAOQuestions() {
+    public POJOQuestion() {
     }
 
     public void setResponse_code(int response_code) {
         this.response_code = response_code;
     }
 
-    public void setResults(DAOResults[] results) {
+    public void setResults(POJOResults[] results) {
         this.results = results;
     }
 
@@ -24,7 +24,7 @@ public class DAOQuestions {
         return response_code;
     }
 
-    public DAOResults[] getResults() {
+    public POJOResults[] getResults() {
         return results;
     }
     

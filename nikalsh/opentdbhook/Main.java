@@ -1,4 +1,4 @@
-package se.nikals.opentdbhook;
+package nikalsh.opentdbhook;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.BufferedReader;
@@ -27,8 +27,8 @@ public class Main {
     private String databaseDir = "";
     private String tokenDir = "";
     private int amountOfQuestionsPerAPICall;
-    private DAOToken daoToken;
-    private DAOQuestions daoQuestions;
+    private POJOToken daoToken;
+    private POJOQuestion daoQuestions;
     private int sum;
 
     public Main(int amountOfQuestionsPerAPICall) throws ProtocolException, IOException {
@@ -41,7 +41,7 @@ public class Main {
         databaseIO = new DatabaseIO(tokenDir, databaseDir);
 
         if (!databaseIO.wasTokenCreatedWithinExpirationDuration()) {
-            apiRequest = new URL(ApiConstants.NEW_TOKEN);
+            apiRequest = new URL(API_CONST.NEW_TOKEN);
             daoToken = generateToken(apiRequest);
             databaseIO.writeTokenToFile(daoToken.token);
 
@@ -64,28 +64,28 @@ public class Main {
         }
     }
 
-    public DAOToken generateToken(URL request) throws IOException {
+    public POJOToken generateToken(URL request) throws IOException {
         sendGET(request);
         in = new BufferedReader(new InputStreamReader(connect.getInputStream()));
         String JSON = in.readLine();
         in.close();
 
-        DAOToken daoToken = new DAOToken();
-        daoToken = new ObjectMapper().readValue(JSON, DAOToken.class);
+        POJOToken daoToken = new POJOToken();
+        daoToken = new ObjectMapper().readValue(JSON, POJOToken.class);
 
         return daoToken;
     }
 
-    public DAOQuestions generateQuestions(URL request) throws IOException {
+    public POJOQuestion generateQuestions(URL request) throws IOException {
         sendGET(request);
         in = new BufferedReader(new InputStreamReader(connect.getInputStream()));
         String JSON = in.readLine();
         System.out.println("recieved JSON!");
         in.close();
 
-        DAOQuestions daoQuestions = new DAOQuestions();
+        POJOQuestion daoQuestions = new POJOQuestion();
 
-        daoQuestions = new ObjectMapper().readValue(JSON, DAOQuestions.class);
+        daoQuestions = new ObjectMapper().readValue(JSON, POJOQuestion.class);
         System.out.println("DAO generated from JSON " + daoQuestions);
 
         return daoQuestions;
@@ -110,9 +110,15 @@ public class Main {
 //        hook.setDatabaseDirectory(path);
 //        hook.setTokenDirectory(path);
 
-        for (String arg : args) {
-            System.out.println(arg);
+        if (args.length > 0) {
+            for (String arg : args) {
+                System.out.println("param: " + arg);
+            }
         }
+
+        System.out.println("set question dump folder");
+        System.out.println("set question dump folder");
+
 //
 //for (int i = 0; i <= 60; i++) {
 //            

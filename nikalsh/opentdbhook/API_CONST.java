@@ -1,10 +1,10 @@
-package se.nikals.opentdbhook;
+package nikalsh.opentdbhook;
 
 /**
  *
  * @author nikalsh
  */
-class ApiConstants {
+class API_CONST {
 
     static final String GLOBAL_COUNT = "https://opentdb.com/api_count_global.php";
     static final String DEFAULT_URL = "https://opentdb.com/api.php?amount=10";

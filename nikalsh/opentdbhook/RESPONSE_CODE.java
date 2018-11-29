@@ -1,10 +1,10 @@
-package se.nikals.opentdbhook;
+package nikalsh.opentdbhook;
 
 /**
  *
  * @author nikalsh
  */
-public class ResponseCodes {
+public class RESPONSE_CODE {
 
     static final int SUCCESS = 0;
     static final int NO_RESULTS = 1;

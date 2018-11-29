@@ -1,16 +1,16 @@
-package se.nikals.opentdbhook;
+package nikalsh.opentdbhook;
 
 /**
  *
  * @author nikalsh
  */
-class DAOToken {
+class POJOToken {
 
     int response_code;
     String response_message;
     String token;
 
-    public DAOToken() {
+    public POJOToken() {
     }
 
     public void setResponse_code(int response_code) {
