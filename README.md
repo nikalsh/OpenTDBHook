@@ -5,7 +5,6 @@ Dependencies:
 - jackson-core
 - jackson-databind
 - jackson-annotations
-
 Maven:
 ```xml
 <dependency> 
