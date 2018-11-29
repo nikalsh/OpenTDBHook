@@ -1,4 +1,4 @@
-package nikalsh.opentdbhook;
+package src.opentdbhook;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.BufferedReader;

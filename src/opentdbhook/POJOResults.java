@@ -1,4 +1,4 @@
-package nikalsh.opentdbhook;
+package src.opentdbhook;
 
 /**
  *

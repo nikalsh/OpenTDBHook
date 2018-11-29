@@ -1,4 +1,4 @@
-package nikalsh.opentdbhook;
+package src.opentdbhook;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
