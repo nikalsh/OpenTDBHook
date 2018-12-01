@@ -10,7 +10,7 @@ class API {
     static final String DEFAULT_URL = "https://opentdb.com/api.php?amount=10";
     static final String CATEGORY_ANY = "";
     static final String DIFFICULTY_ANY = "";
-    
+
     static final String TYPE_ANY = "";
     static final String TYPE_MULTI = "&type=multiple";
     static final String TYPE_TRUE_FALSE = "&type=boolean";
