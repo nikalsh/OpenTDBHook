@@ -1,4 +1,4 @@
-# OpenTDBHook
+# Open TDB API Hook
 Program for downloading trivia questions from the Open Trivia Database API
 
 https://opentdb.com/
