@@ -18,7 +18,7 @@ public class Main {
 //      https://opentdb.com/api_count_global.php    
 
     private String token = "";
-    private FileHandler databaseIO;
+    private FileHandler fh;
     private HttpURLConnection connect;
     private RequestConfig hookConfig;
     private BufferedReader in;
@@ -26,36 +26,34 @@ public class Main {
     private String currDir = System.getProperty("user.dir");
     private String databaseDir = "";
     private String tokenDir = "";
-    private int amountOfQuestionsPerAPICall;
-    private POJOToken daoToken;
-    private POJOQuestion daoQuestions;
+    private int cofficient;
+    private POJOToken pojoToken;
+    private POJOQuestion pojoQuestion;
     private int sum;
 
-    public Main(int amountOfQuestionsPerAPICall) throws ProtocolException, IOException {
-        int roundAmountOfQuestionsPerAPICallToNearestTen = (int) ((Math.round(amountOfQuestionsPerAPICall / 10.0) * 10));
-        this.amountOfQuestionsPerAPICall = (roundAmountOfQuestionsPerAPICallToNearestTen > 50 ? 50 : roundAmountOfQuestionsPerAPICallToNearestTen);
+    public Main(int cofficient) throws ProtocolException, IOException {
+        this.cofficient = cofficient;
+        this.setDatabaseDirectory("/output/questions/");
+        this.setTokenDirectory("/output/token/");
 
-        this.setDatabaseDirectory("/Questions/");
-        this.setTokenDirectory("/opentriviadatabaseapihook/");
+        fh = new FileHandler(tokenDir, databaseDir);
 
-        databaseIO = new FileHandler(tokenDir, databaseDir);
-
-        if (!databaseIO.wasTokenCreatedWithinExpirationDuration()) {
+        if (!fh.wasTokenCreatedWithinExpirationDuration()) {
             apiRequest = new URL(API.NEW_TOKEN);
-            daoToken = generateToken(apiRequest);
-            databaseIO.writeTokenToFile(daoToken.token);
+            pojoToken = generateToken(apiRequest);
+            fh.writeTokenToFile(pojoToken.token);
 
         } else {
-            hookConfig = new RequestConfig(databaseIO.getTokenFromFile());
+            hookConfig = new RequestConfig(fh.getTokenFromFile());
             apiRequest = new URL(hookConfig.getQuestionRequest());
-            for (int i = 0; i < this.amountOfQuestionsPerAPICall; i++) {
-                daoQuestions = generateQuestions(apiRequest);
+            for (int i = 0; i < this.cofficient; i++) {
+                pojoQuestion = generateQuestions(apiRequest);
 
-                System.out.println("Response: " + daoQuestions.response_code);
-                if (daoQuestions.response_code != 4) {
+                System.out.println("Response: " + pojoQuestion.response_code);
+                if (pojoQuestion.response_code != 4) {
                     sum += hookConfig.getAmount();
                     System.out.println(sum + " questions generated");
-                    databaseIO.writeQuestionsToFiles(daoQuestions);
+                    fh.writeQuestionsToFiles(pojoQuestion);
                 } else {
                     System.out.println("Token exhausted! Cannot generate any more non-duplicate questions");
                     break;
@@ -69,11 +67,11 @@ public class Main {
         in = new BufferedReader(new InputStreamReader(connect.getInputStream()));
         String JSON = in.readLine();
         in.close();
+        
+        POJOToken token = new POJOToken();
+        token = new ObjectMapper().readValue(JSON, POJOToken.class);
 
-        POJOToken daoToken = new POJOToken();
-        daoToken = new ObjectMapper().readValue(JSON, POJOToken.class);
-
-        return daoToken;
+        return token;
     }
 
     public POJOQuestion generateQuestions(URL request) throws IOException {
@@ -83,12 +81,12 @@ public class Main {
         System.out.println("recieved JSON!");
         in.close();
 
-        POJOQuestion daoQuestions = new POJOQuestion();
+        POJOQuestion question = new POJOQuestion();
 
-        daoQuestions = new ObjectMapper().readValue(JSON, POJOQuestion.class);
-        System.out.println("DAO generated from JSON " + daoQuestions);
+        question = new ObjectMapper().readValue(JSON, POJOQuestion.class);
+        System.out.println("DAO generated from JSON " + question);
 
-        return daoQuestions;
+        return question;
     }
 
     public void sendGET(URL url) throws IOException {
@@ -106,25 +104,8 @@ public class Main {
     }
 
     public static void main(String[] args) throws IOException {
-//        Main hook = new Main(10);
-//        hook.setDatabaseDirectory(path);
-//        hook.setTokenDirectory(path);
+        Main hook = new Main(300);
 
-        if (args.length > 0) {
-            for (String arg : args) {
-                System.out.println("param: " + arg);
-            }
-        }
-
-//
-//for (int i = 0; i <= 60; i++) {
-//            
-//            
-//            int stuff = (int) ((Math.round(i / 10.0) * 10));
-//            int amountOfQuestionsPerAPICall = (stuff > 50 ? 50 : (stuff < 10 ? 10 : stuff));
-//            System.out.println(i + " = " + amountOfQuestionsPerAPICall);
-//        }
-//
-//    }
     }
+
 }

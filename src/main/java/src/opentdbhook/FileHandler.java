@@ -79,7 +79,7 @@ class FileHandler {
         return token;
     }
 
-    private long getHoursElapsedSince(LocalDateTime earlier) {
+    public long getHoursElapsedSince(LocalDateTime earlier) {
         LocalDateTime now = LocalDateTime.now();
         return ChronoUnit.HOURS.between(earlier, now);
     }
@@ -93,8 +93,8 @@ class FileHandler {
     }
 
     //            URLDecoder.decode(tokenDir, tokenDir)
-    public void writeQuestionsToFiles(POJOQuestion daoQuestions) throws UnsupportedEncodingException, FileNotFoundException {
-        POJOResults[] results = daoQuestions.getResults();
+    public void writeQuestionsToFiles(POJOQuestion pojoQuestion) throws UnsupportedEncodingException, FileNotFoundException {
+        POJOResults[] results = pojoQuestion.getResults();
         String dbdir = this.databaseDir;
         String fileName = "";
         File file;
@@ -138,7 +138,7 @@ class FileHandler {
         return URLDecoder.decode(s, "UTF-8");
     }
 
-    private PrintWriter getPw(File file, boolean append) throws UnsupportedEncodingException, FileNotFoundException {
+    public PrintWriter getPw(File file, boolean append) throws UnsupportedEncodingException, FileNotFoundException {
 
         return (append == true
                 ? new PrintWriter(new BufferedWriter(new OutputStreamWriter(new FileOutputStream(tokenFile, true), "UTF-8")))
