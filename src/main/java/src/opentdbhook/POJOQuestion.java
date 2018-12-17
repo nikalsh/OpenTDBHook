@@ -1,4 +1,4 @@
-package opentdbhook.src;
+package src.opentdbhook;
 
 /**
  *
@@ -27,9 +27,5 @@ public class POJOQuestion {
     public POJOResults[] getResults() {
         return results;
     }
-    
-    
-    
-    
 
 }

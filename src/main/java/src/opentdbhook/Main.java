@@ -116,9 +116,6 @@ public class Main {
             }
         }
 
-        System.out.println("set question dump folder");
-        System.out.println("set question dump folder");
-
 //
 //for (int i = 0; i <= 60; i++) {
 //            

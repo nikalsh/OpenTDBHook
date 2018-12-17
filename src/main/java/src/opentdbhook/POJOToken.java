@@ -1,4 +1,4 @@
-package opentdbhook.src;
+package src.opentdbhook;
 
 /**
  *
